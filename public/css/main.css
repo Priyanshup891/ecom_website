@@ -13,6 +13,10 @@
 .top-under{
     padding: 20px;
 }
+.top-under a{
+    text-decoration: none;
+    color: #010101;
+}
 .navbar{
     margin: 20px;
     font-size: 20px;
