@@ -1,6 +1,16 @@
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose');
+const fasho = require('./models/fasho')
 const app = express();
+
+mongoose.connect('mongodb://priyanshup891:12345@fasho-shard-00-00.hy4xh.mongodb.net:27017,fasho-shard-00-01.hy4xh.mongodb.net:27017,fasho-shard-00-02.hy4xh.mongodb.net:27017/FASHO?ssl=true&replicaSet=atlas-11ebgu-shard-0&authSource=admin&retryWrites=true&w=majority');
+const db = mongoose.connection;
+db.on("error", console.error.bind(console,"connection error:"));
+db.once("open",() => {
+    console.log("Database Connected");
+})
+
 
 app.use(express.static('public'));
 
@@ -11,8 +21,25 @@ app.set('views', path.join(__dirname, 'views'));
 app.get('/', (req,res) => {
     res.send("Ecommerce Website !")
 })
-app.get('/home', (req,res) => {
-    res.render('home');
+app.get('/home', async (req,res) => {
+    const fash = await fasho.find({}).limit(8);
+    res.render('home', {fash});
+})
+
+app.get('/mens', async (req,res) => {
+    const fash = await fasho.find({gender:"Men"}).limit(12);
+    const section = "MENS";
+    res.render('products', {fash, section})
+})
+
+app.get('/womens', async (req,res) => {
+    const fash = await fasho.find({gender:"Women"}).limit(12);
+    const section = "WOMENS";
+    res.render('products', {fash, section})
+})
+
+app.get('/productDetails/:id', (req,res) => {
+    res.render('ProductDetailWomen')
 })
 
 app.listen(3000, () => {

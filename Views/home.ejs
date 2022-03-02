@@ -57,13 +57,13 @@
         <div class="box">
             <h2 class="title">COLLECTIONS</h2>
             <div class="col-3">
-                <a href="Children.html"><img src="image/Group 1.jpg" alt="" class="child" ></a>
+                <a href="/Children"><img src="image/Group 1.jpg" alt="" class="child" ></a>
             </div>
             <div class="col-3">
-                <a href="Mens.html"><img src="image/Group 2.jpg" alt="" class="mens" ></a>
+                <a href="/mens"><img src="image/Group 2.jpg" alt="" class="mens" ></a>
             </div>
             <div class="col-3">
-                <a href="Ladies.html"><img src="image/Group 3.jpg" alt="" class="women" ></a>
+                <a href="/womens"><img src="image/Group 3.jpg" alt="" class="women" ></a>
             </div>
         </div>
     </div>
@@ -72,102 +72,26 @@
         <div class="small-container">
             <h2 class="title">FEATURED PRODUCT</h2>
             <div class="row2">
-                <div class="col-4">
-                    <a href=""><img src="image/Product1.jpg" alt=""></a>
-                    <a href=""><h4>Red Printed T-Shirt</h4></a>
-                    <div class="rating">
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-line"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-                <div class="col-4">
-                    <img src="image/Product2.jpg" alt="">
-                    <h4>Red Printed T-Shirt</h4>
-                    <div class="rating">
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-line"></i>
-                        <i class="ri-star-line"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-                <div class="col-4">
-                    <img src="image/Product3.jpg" alt="">
-                    <h4>Red Printed T-Shirt</h4>
-                    <div class="rating">
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-half-line"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-                <div class="col-4">
-                    <img src="image/Product4.jpg" alt="">
-                    <h4>Red Printed T-Shirt</h4>
-                    <div class="rating">
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-line"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-                <div class="col-4">
-                    <img src="image/Product5.jpg" alt="">
-                    <h4>Red Printed T-Shirt</h4>
-                    <div class="rating">
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-line"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-                <div class="col-4">
-                    <img src="image/Product6.jpg" alt="">
-                    <h4>Red Printed T-Shirt</h4>
-                    <div class="rating">
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-line"></i>
-                        <i class="ri-star-line"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-                <div class="col-4">
-                    <img src="image/Product7.jpg" alt="">
-                    <h4>Red Printed T-Shirt</h4>
-                    <div class="rating">
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-half-line"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
-                <div class="col-4">
-                    <img src="image/Product8.jpg" alt="">
-                    <h4>Red Printed T-Shirt</h4>
-                    <div class="rating">
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-fill"></i>
-                        <i class="ri-star-line"></i>
-                    </div>
-                    <p>$50.00</p>
-                </div>
+                
+                   
+                   
+                    <% for(let fa of fash) { %>
+                        <div class="col-4">
+                            <a href="/productDetails/<%= fa.id %>"><img src=<%= fa.images %>~<%= fa.images %>  alt=""></a>
+                            <a href=""><%= fa.name%></h4></a>
+                            <div class="rating">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-line"></i>
+                            </div>
+                            <p>INR <%= fa.price %></p>
+                        </div>
+                          <% } %>
+                      
+               
+               
             </div>
         </div>
     </div>
