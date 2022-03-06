@@ -10,10 +10,12 @@ db.once("open",() => {
 })
 
 
+
 const fashoDb = async() => {
     await fasho.deleteMany({});
-    for(let i = 0; i < 12491; i++){
+    for(let i = 0; i < 36; i++){
         const f = new fasho ({
+            id:`${fashion[i].id}`,
             name:`${fashion[i].name}`,
             sku:`${fashion[i].sku}`,
             mpn:`${fashion[i].mpn}`,
@@ -22,7 +24,10 @@ const fashoDb = async() => {
             currency:`${fashion[i].currency}`,
             brand:`${fashion[i].brand}`,
             description:`${fashion[i].description}`,
-            images:`${fashion[i].images}`,
+            image1:`${fashion[i].image1}`,
+            image2:`${fashion[i].image2}`,
+            image3:`${fashion[i].image3}`,
+            image4:`${fashion[i].image4}`,
             gender:`${fashion[i].gender}`
         });
         await f.save();

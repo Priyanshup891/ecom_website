@@ -6,17 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
-      rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+    rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Festive&family=Poppins:wght@300;400;500;600;700&family=Satisfy&family=Supermercado+One&family=Ubuntu:wght@500&display=swap"
-      rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Festive&family=Poppins:wght@300;400;500;600;700&family=Satisfy&family=Supermercado+One&family=Ubuntu:wght@500&display=swap"
+    rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/main2.css" />
+    <link rel="stylesheet" href="/css/app.css" />
   </head>
   <body>
     <div class="header">
+     
       <nav>
         <div class="top">
           <div class="top-under">
@@ -39,134 +40,87 @@
 
         <div class="home-shop">
           <h1>PRODUCT</h1>
-          <p>HOME > CHILDREAN</p>
+          <p>HOME > WOMENS</p>
         </div>
 
         <hr>
       </nav>
     </div>
 
-    <div class="small-container Single-Product">
-      <div class="row">
-        <div class="col-2">
-          <img src="image/kids-product-10.jpg" alt="" width="100%" id="ProductImg" />
-
-          <div class="small-img-row">
-            <div class="small-img-col">
-              <img
-                src="image/kids-product-10.jpeg"
-                alt=""
-                width="100%"
-                class="small-img"
-              />
-            </div>
-            <div class="small-img-col">
-              <img
-                src="image/kids-product-10-2.jpeg"
-                alt=""
-                width="100%"
-                class="small-img"
-              />
-            </div>
-            <div class="small-img-col">
-              <img
-                src="image/kids-Product-10-3.jpeg"
-                alt=""
-                width="100%"
-                class="small-img"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="col-2">
-          <p>Home / T-Shirt</p>
-          <h1>Red Printed T-Shirt by HRX</h1>
-          <h4>$50.00</h4>
-          <select name="" id="">
-            <option value="">Select Size</option>
-            <option value="">XXL</option>
-            <option value="">XL</option>
-            <option value="">Large</option>
-            <option value="">Medium</option>
-            <option value="">Small</option>
-          </select>
-          <input type="number" name="" id="" value="1" />
-          <a href="" class="btn">Add to Cart</a>
-
-          <h3>Product Details <i class="ri ri-indent-increase"></i></h3>
-          <br />
-          <p>
-            Give your summer wardrobe a style upgrade with the HRX Men's Active
-            T-shirt. Team it with a pair of shorts for your morning workout or a
-            denims for an evening out with the guys.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="small-container">
-      <div class="row row-3">
-        <h2>Related Products</h2>
-        <p>View More</p>
-      </div>
-    </div>
-
-    <!-- -------------Product--------- -->
-    <div class="categories">
-      <div class="small-container">
+    <% if(fash) { %> 
+      <div class="small-container Single-Product">
         <div class="row">
-          <div class="col-4">
-            <img src="image/kids-Product-11.jpg" alt="" />
-            <h4>Red Printed T-Shirt</h4>
-            <div class="rating">
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-line"></i>
+          <div class="col-2">
+            <img src=<%= fash.image1 %> alt="" width="100%" id="ProductImg" />
+  
+            <div class="small-img-row">
+              <div class="small-img-col">
+                <img
+                  src=<%= fash.image1 %>
+                  alt=""
+                  width="100%"
+                  class="small-img"
+                />
+              </div>
+              <div class="small-img-col">
+                <img
+                  src=<%= fash.image2 %>
+                  alt=""
+                  width="100%"
+                  class="small-img"
+                />
+              </div>
+              <div class="small-img-col">
+                <img
+                  src=<%= fash.image3 %>
+                  alt=""
+                  width="100%"
+                  class="small-img"
+                />
+              </div>
+
+              <div class="small-img-col">
+                <img
+                  src=<%= fash.image4 %>
+                  alt=""
+                  width="100%"
+                  class="small-img"
+                />
+              </div>
+              <div class="small-img-col">
+                <img
+                  src="image/ladies-product-1-3.jpeg"
+                  alt=""
+                  width="100%"
+                  class="small-img"
+                />
+              </div>
             </div>
-            <p>$50.00</p>
           </div>
-          <div class="col-4">
-            <img src="image/kids-Product-12.jpg" alt="" />
-            <h4>Red Printed T-Shirt</h4>
-            <div class="rating">
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-line"></i>
-              <i class="ri-star-line"></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div class="col-4">
-            <img src="image/kids-Product-13.jpg" alt="" />
-            <h4>Red Printed T-Shirt</h4>
-            <div class="rating">
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-half-line"></i>
-            </div>
-            <p>$50.00</p>
-          </div>
-          <div class="col-4">
-            <img src="image/kids-Product-14.jpg" alt="" />
-            <h4>Red Printed T-Shirt</h4>
-            <div class="rating">
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-fill"></i>
-              <i class="ri-star-line"></i>
-            </div>
-            <p>$50.00</p>
+          <div class="col-2">
+            
+            <h1><%= fash.name %></h1>
+            <h4>INR <%= fash.price %></h4>
+            <select name="" id="">
+              <option value="">Select Size</option>
+              <option value="">XXL</option>
+              <option value="">XL</option>
+              <option value="">Large</option>
+              <option value="">Medium</option>
+              <option value="">Small</option>
+            </select>
+            <input type="number" name="" id="" value="1" />
+            <a href="" class="btn">Add to Cart</a>
+  
+            <h3>Product Details <i class="ri ri-indent-increase"></i></h3>
+            <br />
+            <p><%= fash.description %></p>
           </div>
         </div>
       </div>
-    </div>
+      <% } %>
 
+  
     <div class="footer">
         <div class="container">
             <div class="row-4">
