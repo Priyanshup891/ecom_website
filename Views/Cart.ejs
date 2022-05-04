@@ -13,7 +13,7 @@
       href="https://fonts.googleapis.com/css2?family=Festive&family=Poppins:wght@300;400;500;600;700&family=Satisfy&family=Supermercado+One&family=Ubuntu:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/main1.css" />
+    <link rel="stylesheet" href="css/app.css" />
   </head>
   <body>
     <div class="header">
@@ -21,7 +21,7 @@
         <div class="top">
           <div class="top-under">
             <a href="home.ejs"><i class="ri-grid-fill navbar"></i></a>
-            <a href="home.ejs"><span class="navbar">COLLECTIONS</span></a>
+            <a href="/home"><span class="navbar">COLLECTIONS</span></a>
             <a href="Shop.html"><span class="navbar">SHOP</span></a>
             <a href=""><span class="navbar">CONTACT US</span></a>
             <a href="Account.html"><span><i class="navbar ri ri-account-pin-circle-line"></i></span></a>
@@ -49,73 +49,41 @@
                     <th>Quantity</th>
                     <th>Subtotal</th>
                 </tr>
-    
-                <tr>
-                    <td>
-                        <div class="cart-info">
-                            <img src="image/kids-product-10.jpg" alt="">
-                            <div>
-                                <p>Red Printed Tshirt</p>
-                                <small>Price: $50.00</small>
-                                <br>
-                                <a href="">Remove</a>
+
+                <% for(let ca of cart) { %>
+                    <tr class="cartDetails">
+                        <td>
+                            <div class="cart-info">
+                                <img src="<%= ca.image1 %>" alt="">
+                                <div>
+                                    <p><%= ca.name %></p>
+                                    <small>Price: ₹<span class="price"><%= ca.price %></span></small>
+                                    <br>
+                                    <a href="#" id="delete-cart" data-id="<%= ca._id %>">Remove</a>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                    <td><input type="number" value="1"></td>
-                    <td>$50.00</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="cart-info">
-                            <img src="image/Ladies-Product-1.jpg" alt="">
-                            <div>
-                                <p>Red Printed Tshirt</p>
-                                <small>Price: $50.00</small>
-                                <br>
-                                <a href="">Remove</a>
-                            </div>
-                        </div>
-                    </td>
-                    <td><input type="number" value="1"></td>
-                    <td>$75.00</td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="cart-info">
-                            <img src="image/Mens-product-1.jpg" alt="">
-                            <div>
-                                <p>Red Printed Tshirt</p>
-                                <small>Price: $50.00</small>
-                                <br>
-                                <a href="">Remove</a>
-                            </div>
-                        </div>
-                    </td>
-                    <td><input type="number" value="1"></td>
-                    <td>$75.00</td>
-                </tr>
+                        </td>
+                        <td><input class="quentity"   type="number" value="1"></td>
+                        <td>₹ <span class="totalPrice"><%= ca.price %></span></td>
+                    </tr>
+                     
+                    <% } %>
+
             </table>
+
 
             <div class="total-price">
                 <table>
                     <tr>
                         <td>Subtotal</td>
-                        <td>$200.00</td>
+                        <td>₹ <span class="allTotalPrice">0</span></td>
                     </tr>
-                    <tr>
-                        <td>Tax</td>
-                        <td>$35.00</td>
-                    </tr>
-                    <tr>
-                        <td>Total</td>
-                        <td>$235.00</td>
-                    </tr>
+                    
                 </table>
             </div>
         </div>
 
-    
+  
 
     <div class="footer">
         <div class="container">
@@ -150,5 +118,51 @@
         <hr>
         <p class="copyright">CopyRight 2022 - BechelorShop</p>
     </div>
+
+    <script>
+
+        let cartDetails = document.querySelectorAll('.cartDetails')
+
+        let allTotalPrice = 0;
+
+        cartDetails.forEach((cart) => {
+            cart.querySelector('.quentity').addEventListener('change', () => {
+                cart.querySelector('.totalPrice').textContent = cart.querySelector('.price').textContent * cart.querySelector('.quentity').value;
+                
+               
+            })
+            allTotalPrice += Number(cart.querySelector('.totalPrice').textContent);
+
+            
+            
+        })
+        document.querySelector('.allTotalPrice').textContent = allTotalPrice;
+    
+        
+
+
+    </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#delete-cart').on('click', function(e){
+                $target = $(e.target);
+                console.log($target.attr('data-id'))
+                const id = $target.attr('data-id');
+                $.ajax({
+                    type:'DELETE',
+                    url: '/cart_delete/'+id,
+                    success: function(response){
+                        window.location.href='/cart'
+                    },
+                    error: function(err){
+                        console.log(err);
+                    }
+
+
+                })
+            })
+        })
+    </script>
   </body>
 </html>

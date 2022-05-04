@@ -95,22 +95,23 @@
                   class="small-img"
                 />
               </div>
+
             </div>
           </div>
           <div class="col-2">
             
             <h1><%= fash.name %></h1>
             <h4>INR <%= fash.price %></h4>
-            <select name="" id="">
-              <option value="">Select Size</option>
-              <option value="">XXL</option>
-              <option value="">XL</option>
-              <option value="">Large</option>
-              <option value="">Medium</option>
-              <option value="">Small</option>
+            <select class="sizeValue" name="" id="">
+              <option value="selectSize">Select Size</option>
+              <option value="xxl">XXL</option>
+              <option value="xl">XL</option>
+              <option value="larger">Large</option>
+              <option value="medium">Medium</option>
+              <option value="small">Small</option>
             </select>
-            <input type="number" name="" id="" value="1" />
-            <a href="" class="btn">Add to Cart</a>
+            <input class="quentity" type="number" name="" id="quentity" value="1" />
+            <a href="/cart/<%= fash.id %>" class="btn">Add to Cart</a>
   
             <h3>Product Details <i class="ri ri-indent-increase"></i></h3>
             <br />
@@ -156,23 +157,9 @@
     </div>
   </body>
 
-  <script src="main.js"></script>
-  <!-- <script>
+  <script>
+    let quentity = document.getElementById('quentity');
+    console.log(quentity.value);
+  </script>
 
-    var ProductImg = document.getElementById("ProductImg");
-    var smallImg = document.getElementsByClassName("small-img");
-
-    smallImg[0].onclick = function(){
-        ProductImg.src = smallImg[0].src;
-    }
-    smallImg[1].onclick = function(){
-        ProductImg.src = smallImg[1].src;
-    }
-    smallImg[2].onclick = function(){
-        ProductImg.src = smallImg[2].src;
-    }
-    smallImg[3].onclick = function(){
-        ProductImg.src = smallImg[3].src;
-    }
-</script> -->
 </html>

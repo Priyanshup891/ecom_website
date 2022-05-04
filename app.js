@@ -1,7 +1,9 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const fasho = require('./models/fasho');
+const cartData = require('./models/cartData');
 
 const app = express();
 
@@ -20,14 +22,21 @@ db.once("open",() => {
 
 app.use(express.static('public'));
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+
 
 app.set('view engine','ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'Views'));
 
 
 app.get('/', (req,res) => {
-    res.send("Ecommerce Website !")
+    res.render('home')
 })
+
 app.get('/home', async (req,res) => {
     const fash = await fasho.find({}).limit(8);
     res.render('home', {fash});
@@ -52,6 +61,8 @@ app.get('/unisex', async (req,res) => {
 })
 
 app.get('/productDetails/:id', async (req,res) => {
+
+
     const fash = await fasho.findOne({'id' : req.params.id });
     res.render('ProductDetails', {fash})
     
@@ -59,7 +70,46 @@ app.get('/productDetails/:id', async (req,res) => {
 
 
 
+app.get('/cart',async (req, res) =>{
+    const cart = await cartData.find({});    
+    res.render('Cart', {cart})
+})
 
-app.listen(3000, () => {
+
+
+app.get('/cart/:id', async(req,res) => {
+    let productId = req.params.id;
+    const fash = await fasho.findOne({id: productId});
+    
+    let carts = new cartData();
+    carts.id = productId;
+    carts.name = fash.name;
+    carts.image1 = fash.image1;
+    carts.price = fash.price;
+
+    carts.save((err) => {
+        if(err){
+            console.log(err);
+        } else {
+            res.redirect('/home')
+        }
+    })
+
+})
+
+app.delete('/cart_delete/:id', (req, res) => {
+   cartData.remove({_id: req.params.id}, function(err){
+       if(err){
+           console.log(err);
+       } else{
+           res.send('Success')
+       }
+   })
+    
+})
+
+
+
+app.listen(3004, () => {
     console.log("Serving on port 3000");
 })
